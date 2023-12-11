@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Questions</title>
+</head>
+<body>
+    <h1>Exam Questions</h1>
+    <form action="/submit_exam" method="post">
+        {% for question in questions %}
+            <p>{{ question[1] }}</p>
+            <input type="text" name="question_{{ question[0] }}" placeholder="Your Answer" required>
+            <br><br>
+        {% endfor %}
+        <button type="submit">Submit Exam</button>
+    </form>
+</body>
+</html>
