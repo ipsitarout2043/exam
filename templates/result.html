@@ -2,12 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Exam Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Exam Result</h1>
-    <p>Your Score: {{ score }}/{{ total_questions }}</p>
-    <p>Percentage: {{ percentage }}%</p>
+
+    <div class="container">
+        <h1 class="text-center text-primary">Exam Result</h1>
+        <p class="text-center">Hello, {{ username }}!</p>
+
+ <!--<div id="questions" class="m-auto text-center">
+    {% if result %}
+        <h3>Results for {{ username }}</h3>
+        {% for row in result %}
+            <p>Question ID: {{ row[2],row[3] }}</p>
+         
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No data available for {{ username }}.</p>
+    {% endif %}
+        </div>-->
+<div id="questions" class="m-auto text-center">
+    {% if result %}
+        <h3>Results for {{ username }}</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Question ID</th>
+                    <th>Selected Option</th>
+                    <th>Question</th>
+                    <th>Correct Answer</th>
+                    <th>correct option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+    {% else %}
+        <p>No data available for {{ username }}.</p>
+    {% endif %}
+</div>
+        <p>Total Score: {{ total_score }}</p>
+        <p>Secured Score: {{ secured_score }}</p>
+        <p>Result Percentage: {{ result_percentage }}%</p>
+    <div class="m-auto text-center">
+        <a href="{{ url_for('home') }}" class="btn btn-success">Home</a>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   
+
+   
 </body>
 </html>
+   <!--<div id="questions" class="m-auto text-center">
+    {% if result %}
+        <h3>Results for {{ username }}</h3>
+        {% for row in result %}
+            <p>Question ID: {{ row[0] }}</p>
+            <p>Your Answer: {{ row[5] }}</p>
+             
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No data available for {{ username }}.</p>
+    {% endif %}
+</div>-->
